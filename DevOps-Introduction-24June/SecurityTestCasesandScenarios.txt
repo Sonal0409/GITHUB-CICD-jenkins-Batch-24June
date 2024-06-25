@@ -1,0 +1,41 @@
+Security Test Cases and Scenarios
+
+Authentication
+
+Security testing for authentication systems should include the following:
+
+Check password rules—test the password security level and quality required by the site. 
+Identify username enumeration vulnerabilities—check if the error differs depending on whether there is a user. 
+Test password strength—the minimum requirements to create a password. 
+Identify account recovery vulnerabilities—check if attacks can recover accounts (i.e., by changing emails or passwords). 
+Check username strength—ensure usernames are unique. 
+Identify fail-open authentication—check if the system provides open access even when authentication fails. 
+Verify cookie scoping—check if cookies are scoped to the domain or if attackers can steal them.
+Input Validation
+Input validation testing should include the following:
+
+Fuzz request parameters—check for reflected parameters and open redirection.
+Identify SQL injection vulnerabilities—check if the system handles parameters as SQL.
+Identify SOAP injection vulnerabilities—check if the application responds to SOAP. 
+Identify LDAP injection vulnerabilities—test for failure to sanitize inputs. 
+Identify XML injection vulnerabilities—check if injected XML impacts the application.
+Identify XXE injection vulnerabilities—check if attackers can inject external entities.
+Application and Business Logic
+These test cases are important for security testing and require manual intervention (they are too complex to automate, given the uniqueness of each application’s logic). The tests should include the following:
+
+Determine the application logic attack surface—what the application does. 
+Check data transmission from clients—see if information transfers differ between applications. 
+Identify input validation on the client-side—check where the application bases its logic. 
+Identify logic flaws in multi-step processes—check if bypassing steps is possible. 
+Test incomplete input handling—check if the application processes faulty input. 
+Check trust relationships—for example, if users can access admin functions.
+
+Other Tests
+There are additional miscellaneous tests to help ensure an application’s security and identify the following vulnerabilities:
+
+DOM vulnerabilities like XSS. 
+Lack of HTTP security headers. 
+Local privacy vulnerabilities.
+Weak and persistent cookies.
+Weak SSL ciphers.
+URL parameters containing sensitive information.
