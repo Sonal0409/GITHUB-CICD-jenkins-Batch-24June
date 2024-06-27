@@ -1,0 +1,849 @@
+Launch the lab 
+
+Steps to  Launch the Lab from LMS
+
+> Go to https://lms.simplilearn.com/
+> Click on to Program button under Post Graduate Program in DevOps 
+> Select Course 2 - PD DO - DevOps Certification Training
+> Go to Practice Lab on left side and click on it
+> Click on DevOps updated lab
+> Click on Launch Lab button at right bottom
+> Click on RDP (Remote Desktop protocol) access 
+> Click on Start Instance button and click Yes
+> It will take a while for the lab environment to start. Pls wait
+> Click on RDP Access
+> Click on Auth URL - blue button - to launch the lab
+> Lab will launch , click on OK button to proceed
+> Lab desktop will launch
+
+
+Version Control with GIT
+********************
+
+Scenario 1:
+=================================
+Check if we have git installed or not on lab
+
+#  sudo su -
+
+#   git --version
+  
+git version 2.34.1
+
+If git is not installed use following commands to install in it
+
+Extra command:
+
+Install git on ubuntu OS
+
+ apt-get install git -y
+
+Install git on RHEL OS or AMazon Linux 2 OS
+
+yum install git -y
+
+Install git on windows OS
+
+https://git-scm.com/download/win
+
+
+
+
+Scenario 2:
+=============================================
+Create a working directory
+
+
+# mkdir myproject
+# cd myproject
+
+Create a file inside the directory
+
+# touch index1.html index2.html
+
+
+
+Initialize git on the working directory
+
+# git init
+
+
+
+This command will create a .git folder
+
+$ ls -al
+
+
+
+
+
+
+
+Scenario 3:
+==================================
+Configure git for username and email :
+
+$ git config --global user.name admin
+$ git config --global user.email admin@gmail.com
+
+
+Scenario 4:
+=====================================
+
+Add file from working directory to local repo
+=============================
+
+See the status of current working directory
+
+$ git status 
+
+Add the unstagged file to staging area
+
+
+$ git add index1.html index2.html
+
+
+$ git status ⇒ check file is in staging area
+
+Commit the files or changes to LR
+
+
+$ git commit -m “file added”
+
+Check files in Local repo
+
+$ git ls-files
+
+See the commit history:
+
+$ git log
+
+See the history of every commit in a single line
+
+$ git log --oneline
+
+# git log --oneline --stat
+
+
+$ git show <commitid>
+
+===================================================
+
+
+
+
+
+
+
+
+=================================
+
+
+
+
+
+
+========================================================
+
+REVERT Operation in GIT
+=====================================================
+
+
+Git gives us an operation of REVERT using which one can
+
+revert the changes done in a commit to its previous version
+
+In case of revert we are making changes on the Local repo, so we need to commit
+
+While executing revert command:
+        > git will open an editor for you, in which we have to give a message as to why are we reverting the commit
+        > we will save the file
+        > A new commit id for the revert operation will be generated
+
+***
+You can revert only a single commit id at a time with revert command.
+
+
+
+# git log --oneline
+
+Copy the commit id in which you have deleted the file
+
+And now execute revert command on that commit id
+
+Example: git revert <commitid>
+
+
+# git revert 17ffee1
+
+An editor will open
+
+ Press i  to insert any message
+
+And then save the file 
+Press ESC
+Press :wq 
+Press enter key
+
+
+======================================
+
+GIT REST
+===============================================
+
+Git reset operation:
+===============================
+Demo:
+
+Create a new file --> commit on it
+
+touch resetdemo
+git add .
+git commit -m "added a new file resetdemo"
+
+Make some small modification on the file --> commit on it
+Make some small modification on the file --> commit on it
+Make some small modification on the file --> commit on it
+Make some small modification on the file --> commit on it
+Make some small modification on the file --> commit on it
+
+Which mean I will have a very length git commit history
+
+Every small change I have committed it
+
+We always want a clean and crisp commit history
+
+Git says, you can RESET your commit history
+
+   that means:
+     > we can Change the HEAD of the log
+     > we can delete commit ids
+     > we can move the changes from LR to Staging area
+     > we can move the changes from LR to Working area
+     > we can also permanently delete commits and changes in 
+LR and working directory
+
+the command is : git reset <commit id>
+
+What is it that we have to reset, > we want to reset the HEAD to the given <commit id>
+
+#  git reset d573778
+
+So what about the commits before the given the <commit id> --> they will get deleted
+
+So what about the changes we did as part of those commits?
+
+There 3 options that can be given with git reset command
+
+
+--soft:
+
+    Observation: 
+     > In the git log, the commit history is reset -> all the commits which are above the given <commitID> get deleted
+     > Now the HEAD is the  <Commitid> given in the command
+     > All the changes of the deleted commits will be back to staging area.
+
+
+--mixed
+
+Observation: 
+ > In the git log, the commit history is reset -> all the commits which are above the given <commitID> get deleted
+ > Now the HEAD is the  <Commitid> given in the command
+ > All the changes of the deleted commits will be back to working directory
+
+--hard
+=============================
+Observation: 
+ > In the git log, the commit history is reset -> all the commits which are above the given <commitID> get deleted
+ > Now the HEAD is the  <Commitid> given in the command
+ > All the changes of the deleted commits will also be permanently deleted
+
+
+
+# git log --oneline
+
+Select the commit id which is at the bottom of your log.
+
+
+
+# git reset --hard <commit id>
+
+Example : git reset --hard 04f432e
+
+
+
+
+
+
+
+GIT stash:
+=====================================
+
+If you have some incomplete changes in working directory
+
+
+
+Incomplete Changes: Files with some modifications in it, These changes are still in Working directory and not staged or committed
+
+I don't wish to discard the changes -> because we cannot recover them back.
+
+I don’t wish to commit them → 
+
+I wish to temporarily store  these changes in a different location other than working directory
+
+We can  execute a git stash command for this.
+
+
+# git status
+
+# git ls-files
+
+Pick up any file other than .gitignore
+
+
+# vim index1.html
+
+Press i
+
+
+Insert some content
+
+
+Save the file 
+
+Press ESC key
+:wq!
+
+
+OR
+
+# echo "hello All"  >> index1.html
+
+
+# git status
+
+
+# git stash 
+
+With this all the modifications that are in working directory will be stashed
+
+How can we see out stashed changes
+
+# git stash list
+
+
+
+Here:
+stash@{0} : it is the temporary location where the stash is stored
+
+What is there in the stash stash@{0}
+
+# git show stash@{0}
+
+OR
+
+If you want to see in the .git folder
+
+# cat .git/refs/stash
+
+You will get the stash id
+
+# git show <stashID>
+
+
+
+Get the changes back to the working directory:
+=====================================
+
+#  git stash pop stash@{0}
+
+
+Changes will be back to working directory, stash will be dropped
+
+======================================
+
+Suppose we have multiple files in the working directory with status as modified
+
+
+# git ls-files
+
+Select few files
+
+# echo "hello All"  >>  index1.html
+
+# echo "hello All"  >>  index2.html
+
+
+# git stash -p
+
+Select y to add those changes to stash and n to not add the changes to stash
+
+# git stash list
+
+
+Among multiple changes if we have to send only 1 file changes to stash
+
+# git stash push filename
+
+
+This is for your information -> Extra commands in stash …No need to execute them
+===========================================
+
+Changes in working directory and changes in staging area
+
+Git stash command will stash staged as well as unstaged files
+
+Changes in working directory and untracked file(new file)
+
+
+
+
+If we give git stash → only modified files will be stashed.. New file remain in working directory
+
+ the untracked file should also be stashed  → how to do that?
+
+
+
+
+For this we have to give option : -u or  --include-untracked
+
+
+git stash -> will only stash modified files
+git stash -u → modified and untracked file
+git stash --all → all files in working directory
+
+git stash show --include-untracked  -> shows untracked file
+
+
+=================================================================
+
+Day 3: 27 June - Notes
+==========================================
+
+Agenda:
+=============
+
+> Branching and Merging
+> Merging strategy - Rebase
+> Conflicts-How to resolve conflicts
+> remote repo in github
+> Push,pull,clone and forking
+> pull request in github
+
+
+Branching & Merging
+==========================
+
+
+# mkdir myproject
+# cd myproject
+# git init
+# git config --global user.name admin
+# git config --global user.email admin@gmail.com
+# touch index1.html
+# git add .
+# git commit -m “done”
+
+
+Command to see how many branches do we have in out local repo:
+
+$ git branch
+
+
+$ git status ⇒ working tree should be clean
+
+
+Command to create a branch with name as feature1
+
+$ git branch feature1
+
+Command to switch to branch with name feature1
+
+$ git checkout feature1
+
+Switched to branch feature1
+
+Create a new file on the branch feature1
+
+$ touch login
+
+$ git status
+
+Untracked file
+
+
+$ git add login
+$ git commit -m “done on branch”
+$ git log --oneline
+
+Merging the feature1 branch to master branch
+========================
+
+By merging we mean 
+
+The source branch → login has commits that will be merged to destination branch master
+
+Always Switch to the destination branch where we have to merge
+
+$ git checkout master
+
+$ git merge feature1 master
+
+$ git log --oneline
+
+All commits of login are present in master also, login file is also there on master branch
+
+=====================================
+
+Delete a Branch : 
+
+# git branch -d feature1
+
+
+=====================================
+Rename a branch:
+
+# git branch -m oldbranhcname newbranchname
+
+# git branch -m feature1 login
+
+===========================================
+
+Rebasing:
+===========================================
+
+
+
+Delete any branches that you have
+
+# git branch -d <branchname>
+
+# git branch
+
+
+Rebasing is merging strategy that is always applied on a feature branch
+It is never applied on Master branch
+
+In case rebase the commit history on your git repository is re-arranged on the feature branch
+
+The commit history will integrated as a patch
+ >  all the commit of master branch (base branch)
+> than all the new commits of done on feature branch
+
+Demo:
+
+# git branch
+
+# git checkout master
+
+# git branch b1
+
+On the master branch make 1 commit
+
+# touch masterfile1
+
+# git add .
+# git commit -m “done on master”
+
+> Checkout to b1 branch and create 2  new commits on the feature branch
+
+# touch b1file2
+# git add .
+# git commit  -m "modified new file on b1 branch"
+
+Make second commit
+
+# touch b1file
+
+# git add .
+
+# git commit -m “done on b1 branch”
+
+
+> We are going to switch to feature branch, on the feature I want to merge the commits of 2 branches in a linear workflow , i.e we should have all commits of master branch available and then commits of feature branch should be there
+
+
+$ git rebase master
+
+ we should have all commits of master branch available and then new commits of feature branch should be there
+
+
+=======================================
+
+Conflicts and resolving Merge conflicts
+=========================================
+
+# git checkout master
+
+# git branch login_branch
+
+# git checkout login-branch
+
+# echo “this file is for login code” >> login
+
+# ls
+
+# git add .
+
+# git commit -m " file on branch"
+
+#  git checkout master
+
+ # echo “this file is for login code on master branch” >> login
+
+# echo “created by sonal” >> login
+
+# git add .
+
+# git commit -m " file on master"
+
+# git merge login_branch master
+
+We will now get merge conflicts.
+
+Open the file 
+
+# vim login
+
+
+Press i
+Merge the changes as you required
+
+Save the file (:wq!)
+
+
+# git add .
+
+# git commit -m "done resolving conflicts" 
+
+
+
+
+
+
+
+Create a Remote repositories
+
+To create account in github:
+
+https://github.com/
+
+
+
+Click on signup
+
+Given valid email address
+Give password
+Give username
+Click on continue.
+
+
+
+An email will be sent on your mail id
+Verify the email
+And create the account
+
+> Login to github
+
+
+
+
+
+
+
+
+
+
+
+Continue for free
+
+
+
+
+
+
+
+
+Working on Remote repository:
+================================
+
+
+
+Create a repository:
+
+
+> click on New button to create a remote repo
+> Name to the repository
+> select public repo
+> click on Create repository
+
+
+
+
+
+
+Connect Local repo to remote repo
+
+Go to git and execute this command
+
+  $ git remote add origin <your remote repo Path>
+
+Example like this:
+…
+ git remote add origin https://github.com/Sonal0409/myproject27June_sonal.git
+…
+
+Execute the command to check local and remote repo is set:
+
+  $ git remote -v
+
+To remove local repo and remote repo connection:
+
+$ git remote rm origin
+
+Command that can be used to update existing remote origin:
+
+$ git remote set-url origin <url>
+
+
+=======================================
+
+PUSH the master branch to remote repo
+===========================
+
+On the remote repo we have no code, no files no commits and no branches
+
+
+# git checkout master
+
+# git push origin master
+
+Here origin means variable storing path of remote repo 
+
+
+It will now ask to enter username
+
+Username for 'https://github.com':
+
+Here enter the token and press enter key
+
+Again it will ask for password
+
+Password for 'https://ghp_mJ92gregYqNggrggd8AY1NxkWpYigter345Q6PHAM7VxuLg26F4wB@github.com':
+
+JUST PRESS ENTER KEY, donto enter anything for apssword
+
+It will send the files and commits to remote.
+
+
+STEPS TO CREATE THE PERSONAL ACCESS TOKEN ON GIT:
+
+
+Create a Personal Access token on github
+It is a authentication method which very secure
+This is used whenever we have to push files or changes from Local to remote repo
+There is no concept of using password, instead we have to use Personal access token in git locally
+
+Demo:
+
+
+To create token on github, go to this link
+
+https://github.com/settings/tokens
+
+
+Click  Generate New token→ select token classic
+Note→ give a name to the token
+Expiration -> 30 days
+Select scope : repo (1 checkbox) 
+Click on generate token
+
+Make sure to copy your personal access token now. You won’t be able to see it again! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
