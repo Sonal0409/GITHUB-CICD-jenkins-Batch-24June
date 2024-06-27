@@ -1,0 +1,244 @@
+Community Link:-https://community.simplilearn.com/threads/pgp-do-mar-2022-cohort.69632/
+
+Steps to  Launch the Lab from LMS
+
+> Go to https://lms.simplilearn.com/
+> Click on to Program button under Post Graduate Program in DevOps 
+> Select Course 2 - PD DO - DevOps Certification Training
+> Go to Practice Lab on left side and click on it
+> Click on DevOps in AWS V2
+> Click on Launch Lab button at right bottom
+> Click on RDP (Remote Desktop protocol) access 
+> Click on Start Instance button and click Yes
+> It will take a while for the lab environment to start. Pls wait
+> Click on RDP Access
+> Click on Auth URL - blue button - to launch the lab
+> Lab will launch , click on OK button to proceed
+> Lab desktop will launch
+
+*********
+[OR]
+
+Steps to Launch Lab via SSH
+
+> Go to https://lms.simplilearn.com/
+> Click on to Program button under Post Graduate Program in DevOps 
+> Select Course 2 - PD DO - DevOps Certification Training
+> Go to Practice Lab on left side and click on it
+> Click on DevOps in AWS V2
+> Click on Launch Lab button at right bottom
+> Click on Web Console
+> Open a SSH client like GIT bash
+> Enter the below command - 
+      ssh yourusername@ip_on_webconsole -p 42006
+> It will ask for a password. Give the password from WebConsole.
+> you will be connected to lab via SSH
+
+************
+IF ANY ISSUES WITH ACCESSING THE LAB- PLS REACH OUT TO SUPPORT TEAM
+*************
+
+Linux  Commands
+
+Click on the Terminal at button[ it will be a square balck button].
+Terminal application will open. It will be black screen
+
+Linux commands are case sensitive.
+
+
+Check Version of our OS
+          
+                 $ lsb_release -a  ⇒ ubuntu
+                $ cat /etc/os-release ⇒ centos
+
+Clear the screen
+$ clear
+Check your present working directory
+$ pwd
+List the files and directories inside a directory
+            $ ls
+            $ ls Desktop/
+            $ ls -l
+            $ ls -la 
+Manual command
+
+$ man pwd
+Press q to come out of the page
+Use up arrow and down arrow to scroll
+
+$ pwd –help ⇒ this will also provide details about the command
+
+$ apropos [keyword] ⇒ this command will search the manual and provide you related commands
+
+Create a directory
+$ mkdir myfiles
+
+Change to the directory myfiles
+
+$ cd myfiles
+Create an empty file
+$ touch file1
+$ ls 
+Enter data inside the file
+
+$ echo "Hello Everyone!" > file1
+
+$ cat file1 ⇒ to see contents of the file1
+
+$ echo “hello devops” >> file1   => append the line in the file
+
+$ echo -n “foo” >> file1    : this will remove the new line
+-n : appends to the file without a new line at the end so next entry will be on same line
+
+Use editors to create a file ,  add contents in the file and save the file
+
+Vim Editor
+
+$ vim file2
+Press i   => to insert data
+
+Press ESC
+:wq!
+
+Press enter
+
+$ ls
+$ cat file2
+
+
+Vi editor - to be tried by learners
+
+Nano editor
+
+             $ nano file3
+
+               Write the content in the file 
+
+                To save the file 
+
+              Ctl+x => Y => press enter
+
+           $  ls 
+           $  cat file3
+
+Copy the contents of 1 file to another
+$ cp file3 copyfile
+$ ls
+$ cat copyfile  ⇒ it will have same contents of file3
+Rename a file
+$ mv copyfile file4
+$ ls
+$ mv file4 /tmp/file4  ⇒ move file4 to tmp directory
+Become a super user - admin
+$ sudo su -
+
+
+
+Create a new user in your machine
+               $ useradd alice
+
+              $ cat /etc/passwd
+              $ useradd bob
+   14 . Create a new group
+            $ groupadd caltech
+
+15. Add users to above created group
+         $ usermod -G cattech alice 
+
+            $ cat /etc/passwd ⇒ see user details
+            $ cat /etc/group ⇒ see the group details
+
+16. Edit permissions of a file
+
+
+ -rw-r--r--  1 root root    0 Mar 13 17:27 file1
+
+Root - user
+Root - group
+
+: file , d=> directory
+
+Read write executable
+
+Rw-  ⇒ permission for the owner of the file
+
+R–   ⇒ permission for the users that are part of group root
+
+R–  → permission for the other users that are not part of the group
+
+Different User ⇒ 
+User  ⇒ u
+Group ⇒ g
+All users ⇒ a
+
+
+
+add permission to write for all users
+
+$ chmod  a+w file1
+
+Add permission to remove write for all users
+
+$ chmod a-w file1
+
+
+Add executable permission for user of the file
+
+$ chmod u+x file1
+
+Remove write permission for group
+
+$ chmod g-w file1
+
+
+Remove a file:
+
+rm filename
+
+rm copiedfile 
+
+ls
+
+removes the files
+
+Remove directories
+
+rm -rf mynewprojects
+
+       -r, -R, --recursive
+              remove directories and their contents recursively
+
+       -d, --dir
+              remove empty directories
+
+  -f, --force
+              ignore nonexistent files and arguments, never prompt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
